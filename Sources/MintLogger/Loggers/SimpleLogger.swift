@@ -18,7 +18,7 @@ public final class SimpleLogger: LoggerType {
         return self.dateFormatter.string(from: Date())
     }
     
-    init() {}
+    public init() {}
     
     public func log(_ level: LogLevel, tag: LogTag, className: String, _ message: String) {
         #if DEBUG
