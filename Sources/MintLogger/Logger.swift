@@ -12,24 +12,26 @@ public final class Logger {
     internal var disabledSymbols = Set<String>()
     fileprivate(set) static var sharedInstance = Logger()
 
+    public init() {}
+    
     /// Overrides shared instance, useful for testing
-    static func setSharedInstance(_ logger: Logger) {
+    public static func setSharedInstance(_ logger: Logger) {
         self.sharedInstance = logger
     }
 
-    func registerLoggers(_ loggers: [LoggerRegisterContainer]) {
+    public func registerLoggers(_ loggers: [LoggerRegisterContainer]) {
         registeredLoggers = loggers
     }
     
-    func ignoreClass(_ type: AnyClass) {
+    public func ignoreClass(_ type: AnyClass) {
         self.disabledSymbols.insert(String(describing: type))
     }
 
-    func ignoreTag(_ tag: LogTag) {
+    public func ignoreTag(_ tag: LogTag) {
         self.disabledSymbols.insert(tag.rawValue)
     }
 
-    func log(_ loggerType: LoggerRegisterType, _ level: LogLevel, tag: LogTag, className: String, _ message: String) {
+    public func log(_ loggerType: LoggerRegisterType, _ level: LogLevel, tag: LogTag, className: String, _ message: String) {
         guard self.logAllowed(tag, className: className) else {
             return
         }
