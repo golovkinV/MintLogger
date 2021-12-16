@@ -27,6 +27,7 @@ let package = Package(
             name: "MintLogger",
             dependencies: [
                 .product(name: "Logging", package: "swift-log"),
+                .product(name: "Pulse", package: "Pulse"),
                 .product(name: "PulseUI", package: "Pulse"),
                 .product(name: "PulseCore", package: "Pulse")
             ]),
