@@ -44,7 +44,6 @@ public final class PulseLogger: LoggerType {
     }
     
     public func log(_ level: LogLevel, tag: LogTag, className: String, _ message: String) {
-        print("🍕")
         switch level {
         case .debug:
             logger.debug("🟢 DEBUG: \n[\(className)]\n\t -> \(message)")
