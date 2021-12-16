@@ -9,6 +9,7 @@ import Logging
 import Foundation
 import UIKit
 import PulseUI
+import Pulse
 
 public typealias UIEventSubtype = UIEvent.EventSubtype
 
