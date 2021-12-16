@@ -8,10 +8,15 @@
 import Foundation
 import Pulse
 import Alamofire
+import UIKit
 
 public struct MoyaNetworkLogger: EventMonitor {
     let logger: NetworkLogger
-
+    
+    public init(logger: NetworkLogger) {
+        self.logger = logger
+    }
+    
     public func request(_ request: Request, didCreateTask task: URLSessionTask) {
         logger.logTaskCreated(task)
     }
