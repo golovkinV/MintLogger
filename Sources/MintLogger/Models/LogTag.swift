@@ -16,4 +16,5 @@ public enum LogTag: String {
     case repository
     case router
     case viewController
+    case coordinator
 }
