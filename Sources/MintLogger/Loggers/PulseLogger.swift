@@ -38,7 +38,9 @@ public final class PulseLogger: LoggerType {
         return Logging.Logger(label: bundle)
     }
     
-    public init() {}
+    public init() {
+        LoggingSystem.bootstrap(PersistentLogHandler.init)
+    }
     
     public func log(_ level: LogLevel, tag: LogTag, className: String, _ message: String) {
         switch level {
