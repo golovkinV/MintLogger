@@ -9,12 +9,11 @@ import Foundation
 
 public enum LogTag: String {
     case unnamed
-    case observable
     case model
     case viewModel
     case view
     case service
     case repository
-    case presenter
     case router
+    case viewController
 }
