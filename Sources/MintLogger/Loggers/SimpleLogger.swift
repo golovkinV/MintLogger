@@ -21,6 +21,7 @@ public final class SimpleLogger: LoggerType {
     public init() {}
     
     public func log(_ level: LogLevel, tag: LogTag, className: String, _ message: String) {
+        print("🍺")
         #if DEBUG
         switch level {
         case .debug:
