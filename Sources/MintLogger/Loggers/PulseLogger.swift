@@ -37,7 +37,7 @@ public final class PulseLogger: LoggerType {
     private let logger: Logging.Logger = Logging.Logger(label: "pulse_logger")
     
     public init() {
-        LoggingSystem.bootstrap(PersistentLogHandler.init)
+
     }
     
     public func log(_ level: LogLevel, tag: LogTag, className: String, _ message: String) {
