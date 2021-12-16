@@ -11,7 +11,7 @@ public struct LoggerRegisterContainer {
     let type: LoggerRegisterType
     private(set) var logger: LoggerType?
     
-    init(_ type: LoggerRegisterType) {
+    public init(_ type: LoggerRegisterType) {
         self.type = type
         logger = type.fetchLogger()
     }

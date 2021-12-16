@@ -10,7 +10,7 @@ import Foundation
 public enum LoggerRegisterType {
     case simple, pulse
     
-    func fetchLogger() -> LoggerType? {
+    public func fetchLogger() -> LoggerType? {
         switch self {
         case .simple:
             return SimpleLogger()
