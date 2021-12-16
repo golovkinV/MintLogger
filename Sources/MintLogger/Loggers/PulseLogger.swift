@@ -21,7 +21,7 @@ public final class UIPulseWindow: UIWindow {
         if (event!.type == .motion && event!.subtype == .motionShake),
            !(rootVC is PulseUI.MainViewController) {
             let vc = PulseUI.MainViewController()
-            vc.modalPresentationStyle = .overCurrentContext
+            vc.modalPresentationStyle = .pageSheet
             rootVC.present(vc, animated: true)
         } else {
             super.motionEnded(motion, with: event)
