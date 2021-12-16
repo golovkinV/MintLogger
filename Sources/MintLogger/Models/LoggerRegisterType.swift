@@ -15,7 +15,7 @@ public enum LoggerRegisterType {
         case .simple:
             return SimpleLogger()
         case .pulse:
-            return nil
+            return PulseLogger()
         }
     }
 }
