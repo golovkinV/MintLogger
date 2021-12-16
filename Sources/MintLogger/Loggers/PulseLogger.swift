@@ -34,10 +34,7 @@ public final class UIPulseWindow: UIWindow {
 
 public final class PulseLogger: LoggerType {
     
-    private var logger: Logging.Logger {
-//        let bundle = Bundle.main.bundleIdentifier ?? "pulse_logger"
-        return Logging.Logger(label: "pulse_logger")
-    }
+    private let logger: Logging.Logger = Logging.Logger(label: "pulse_logger")
     
     public init() {
         LoggingSystem.bootstrap(PersistentLogHandler.init)
