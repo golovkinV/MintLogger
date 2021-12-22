@@ -11,39 +11,12 @@
         }
       },
       {
-        "package": "Moya",
-        "repositoryURL": "https://github.com/Moya/Moya",
-        "state": {
-          "branch": "master",
-          "revision": "6959c4440315a6dcf7227ed70728c2c3d5eb28ee",
-          "version": null
-        }
-      },
-      {
         "package": "Pulse",
         "repositoryURL": "https://github.com/kean/Pulse",
         "state": {
           "branch": null,
           "revision": "f944ac0095f5a844501015fb5ad45411a41c133d",
           "version": "0.20.0"
-        }
-      },
-      {
-        "package": "ReactiveSwift",
-        "repositoryURL": "https://github.com/ReactiveCocoa/ReactiveSwift.git",
-        "state": {
-          "branch": null,
-          "revision": "c43bae3dac73fdd3cb906bd5a1914686ca71ed3c",
-          "version": "6.7.0"
-        }
-      },
-      {
-        "package": "RxSwift",
-        "repositoryURL": "https://github.com/ReactiveX/RxSwift.git",
-        "state": {
-          "branch": null,
-          "revision": "7c17a6ccca06b5c107cfa4284e634562ddaf5951",
-          "version": "6.2.0"
         }
       },
       {
