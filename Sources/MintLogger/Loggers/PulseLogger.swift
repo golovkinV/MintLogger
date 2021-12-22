@@ -10,24 +10,28 @@ import Foundation
 import UIKit
 import PulseUI
 import Pulse
+import Combine
 
 public typealias UIEventSubtype = UIEvent.EventSubtype
 
 public final class UIPulseWindow: UIWindow {
-        
+    
+    public let openPulsePublisher = PassthroughSubject<UIViewController, Never>()
+    
     override public func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         #if DEBUG
+            openPulse(motion, with: event)
+        #endif
+    }
+    
+    private func openPulse(_ motion: UIEventSubtype, with event: UIEvent?) {
         guard let rootVC = self.rootViewController else { return }
-
         if (event!.type == .motion && event!.subtype == .motionShake),
            !(rootVC is PulseUI.MainViewController) {
-            let vc = PulseUI.MainViewController()
-            vc.modalPresentationStyle = .pageSheet
-            rootVC.present(vc, animated: true)
+            openPulsePublisher.send(rootVC)
         } else {
             super.motionEnded(motion, with: event)
         }
-        #endif
     }
 }
 
