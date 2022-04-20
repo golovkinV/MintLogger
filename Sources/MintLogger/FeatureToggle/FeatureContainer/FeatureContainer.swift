@@ -1,5 +1,5 @@
 //
-//  FeatureProvider.swift
+//  FeatureContainer.swift
 //  
 //
 //  Created by Vladimir Golovkin on 20.12.2021.
@@ -7,12 +7,12 @@
 
 import Foundation
 
-public protocol FeatureProvider {
-    var features: [Feature] { get set }
+public protocol FeatureContainer {
+    var features: [Feature] { get }
     func set(features: [Feature])
 }
 
-public final class DefaultFeatureProvider: FeatureProvider {
+public final class DefaultFeatureContainer: FeatureContainer {
     
     public var features: [Feature] = []
 

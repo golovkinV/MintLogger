@@ -30,6 +30,5 @@ final class ContextCell: BaseFeatureCell {
         titleLabel.pin
             .vertically()
             .horizontally(16)
-            .sizeToFit(.width)
     }
 }
