@@ -47,8 +47,8 @@ final class FeatureSwitchCell: BaseFeatureCell {
     
     override func layout() {
         modeSwith.pin
-            .top()
-            .right(16)
+            .centerEnd()
+            .marginRight(16)
         
         titleLabel.pin
             .centerRight(to: modeSwith.anchor.centerLeft)

@@ -19,9 +19,13 @@ public final class FeatureToggleViewModel {
     }
     
     func changeFeatureState(_ model: Feature) {
-        FeatureToggleContainer.shared.service.changeFeatureState(model)
+        FeatureToggleProvider.shared.service.changeFeatureState(model)
     }
-    
+
+    func changeFeatureToggleValue(_ model: Feature) {
+        FeatureToggleProvider.shared.service.changeFeatureToggleValue(model)
+    }
+
     private func setUpBindings() {
         input.didLoad.publisher
             .sink { [weak self] _  in
@@ -31,7 +35,7 @@ public final class FeatureToggleViewModel {
     }
     
     private func fetchFeatures() {
-        output.items = FeatureToggleContainer.shared.service.fetchFeatures()
+        output.items = FeatureToggleProvider.shared.service.fetchFeatures()
     }
 }
 

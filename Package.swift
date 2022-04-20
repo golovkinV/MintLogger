@@ -20,6 +20,9 @@ let package = Package(
          .package(url: "https://github.com/kean/Pulse", from: "0.15.3"),
          .package(url: "https://github.com/apple/swift-log", from: "1.0.0"),
          .package(url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "5.0.0")),
+         .package(url: "https://github.com/layoutBox/PinLayout", from: "1.0.0"),
+         .package(url: "https://github.com/CombineCommunity/CombineCocoa", from: "0.3.0"),
+         .package(url: "https://github.com/SnapKit/SnapKit", from: "5.0.1")
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -31,7 +34,10 @@ let package = Package(
                 .product(name: "Pulse", package: "Pulse"),
                 .product(name: "PulseUI", package: "Pulse"),
                 .product(name: "PulseCore", package: "Pulse"),
-                .product(name: "Alamofire", package: "Alamofire")
+                .product(name: "Alamofire", package: "Alamofire"),
+                .product(name: "PinLayout", package: "PinLayout"),
+                .product(name: "CombineCocoa", package: "CombineCocoa"),
+                .product(name: "SnapKit", package: "SnapKit")
             ]),
         .testTarget(
             name: "MintLoggerTests",

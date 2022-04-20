@@ -74,11 +74,17 @@ public final class FeatureToggleViewController: UIViewController {
 
 extension FeatureToggleViewController: UICollectionViewDataSource {
     
-    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        items.count
+    public func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
+        return items.count
     }
     
-    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         let item = items[indexPath.item]
         switch item.type {
         case .switch:
@@ -91,7 +97,59 @@ extension FeatureToggleViewController: UICollectionViewDataSource {
     }
 }
 
-extension FeatureToggleViewController: UICollectionViewDelegate {}
+extension FeatureToggleViewController: UICollectionViewDelegate {
+    public func collectionView(
+        _ collectionView: UICollectionView,
+        contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint
+    ) -> UIContextMenuConfiguration? {
+        let item = items[indexPath.item]
+        return configureContextMenu(feature: item)
+    }
+
+    private func configureContextMenu(feature: Feature) -> UIContextMenuConfiguration? {
+        guard case let .contextMenu(items) = feature.type, !items.isEmpty else { return nil }
+        var changeFeature = feature
+
+        let validToggleValue = fetchValidValue(for: feature, items: items)
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (action) -> UIMenu? in
+            var actions: [UIAction] = []
+            items.forEach { item in
+
+                let state: UIMenu.State = item.toggleValue == validToggleValue ? .on: .off
+
+                let action: UIAction = .init(title: item.title, state: state) { [weak self] _ in
+                    changeFeature.toggleValue = item.toggleValue
+                    self?.viewModel.changeFeatureToggleValue(changeFeature)
+                    item.didSelected?()
+                }
+                actions.append(action)
+            }
+
+            return UIMenu(
+                title: "Options",
+                image: nil,
+                identifier: nil,
+                options: UIMenu.Options.displayInline,
+                children: actions
+            )
+        }
+    }
+
+    private func fetchValidValue(for feature: Feature, items: [ContextMenuItem]) -> String? {
+
+        if let savedToggleValue = FeatureToggleProvider.shared.fetchToggleValue(for: feature.key) {
+            return savedToggleValue
+        }
+
+        var changingFeature = feature
+        let defaultItem = items.first(where: { $0.isDefault })
+        let firstValue = defaultItem?.toggleValue ?? items.first?.toggleValue
+        changingFeature.toggleValue = firstValue
+        viewModel.changeFeatureToggleValue(changingFeature)
+
+        return firstValue
+    }
+}
 
 extension FeatureToggleViewController: FeatureDelegate {
     public func changeState(_ model: Feature?) {
