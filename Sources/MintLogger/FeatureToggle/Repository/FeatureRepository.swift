@@ -20,7 +20,7 @@ public final class DefaultFeatureRepository: FeatureRepository, Loggable {
     public var loggingTag: LogTag = .repository
 
     public func fetchFeatures() -> [Feature] {
-        FeatureToggleProvider.shared.provider.features.map { feature -> Feature in
+        FeatureToggleProvider.shared.container.features.map { feature -> Feature in
             var feature = feature
             feature.isActive = fetchFeatureState(for: feature.key)
             return feature

@@ -10,7 +10,7 @@ import Foundation
 public final class FeatureToggleProvider {
     public static let shared: FeatureToggleProvider = .init()
     
-    public private(set) var provider: FeatureContainer = DefaultFeatureContainer()
+    public private(set) var container: FeatureContainer = DefaultFeatureContainer()
     private(set) var service: FeatureService = DefaultFeatureService()
     
     @discardableResult
@@ -21,7 +21,7 @@ public final class FeatureToggleProvider {
     
     @discardableResult
     public func set(provider: FeatureContainer) -> FeatureToggleProvider {
-        self.provider = provider
+        self.container = provider
         return self
     }
     

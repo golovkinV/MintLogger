@@ -11,12 +11,39 @@
         }
       },
       {
+        "package": "CombineCocoa",
+        "repositoryURL": "https://github.com/CombineCommunity/CombineCocoa",
+        "state": {
+          "branch": null,
+          "revision": "4e262c2f9fb1cee1cb3be5717f7e6b55eb823971",
+          "version": "0.4.0"
+        }
+      },
+      {
+        "package": "PinLayout",
+        "repositoryURL": "https://github.com/layoutBox/PinLayout",
+        "state": {
+          "branch": null,
+          "revision": "b44e3c8891a75fc711d85b86c03fed582d6c6ca5",
+          "version": "1.10.2"
+        }
+      },
+      {
         "package": "Pulse",
         "repositoryURL": "https://github.com/kean/Pulse",
         "state": {
           "branch": null,
           "revision": "f944ac0095f5a844501015fb5ad45411a41c133d",
           "version": "0.20.0"
+        }
+      },
+      {
+        "package": "SnapKit",
+        "repositoryURL": "https://github.com/SnapKit/SnapKit",
+        "state": {
+          "branch": null,
+          "revision": "f222cbdf325885926566172f6f5f06af95473158",
+          "version": "5.6.0"
         }
       },
       {
