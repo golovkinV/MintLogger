@@ -20,8 +20,8 @@ public final class FeatureToggleProvider {
     }
     
     @discardableResult
-    public func set(provider: FeatureContainer) -> FeatureToggleProvider {
-        self.container = provider
+    public func set(container: FeatureContainer) -> FeatureToggleProvider {
+        self.container = container
         return self
     }
     
