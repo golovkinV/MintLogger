@@ -30,7 +30,7 @@ public final class SimpleLogger: LoggerType {
         case .info:
             print("\(self.timestamp) 💙 INFO: \n[\(tag.rawValue)][\(className)] \n -> \(message) \n")
         case .warning:
-            print("\(self.timestamp) 💛 WARNING: \n[\(tag.rawValue)][\(className)] \n -> \(message) \n)")
+            print("\(self.timestamp) 💛 WARNING: \n[\(tag.rawValue)][\(className)] \n -> \(message) \n")
         default:
             print("\(self.timestamp) 💜 VERBOSE: \n [\(tag.rawValue)][\(className)] \n -> \(message) \n")
         }
