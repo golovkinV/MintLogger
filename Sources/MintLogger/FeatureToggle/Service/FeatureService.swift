@@ -9,10 +9,10 @@ import Foundation
 
 public protocol FeatureService {
     func fetchFeatures() -> [Feature]
-    func changeFeatureState(_ model: Feature)
+    func changeFeatureState(_ model: SwitchFeature)
     func fetchFeatureState(for key: String) -> Bool
     func fetchToggleValue(for key: String) -> String?
-    func changeFeatureToggleValue(_ model: Feature)
+    func changeFeatureToggleValue(_ model: ValueFeature)
 }
 
 public final class DefaultFeatureService: FeatureService {
@@ -23,11 +23,11 @@ public final class DefaultFeatureService: FeatureService {
         featureRepository.fetchFeatures()
     }
     
-    public func changeFeatureState(_ model: Feature) {
+    public func changeFeatureState(_ model: SwitchFeature) {
         featureRepository.changeFeatureState(model)
     }
 
-    public func changeFeatureToggleValue(_ model: Feature) {
+    public func changeFeatureToggleValue(_ model: ValueFeature) {
         featureRepository.changeFeatureToggleValue(model)
     }
 

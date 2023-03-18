@@ -7,29 +7,42 @@
 
 import Foundation   
 
-public enum FeatureType {
-    case `switch`, contextMenu(items: [ContextMenuItem])
-}
-
-public protocol Feature {
-    var key: String { get }
-    var title: String { get }
-    var type: FeatureType { get }
-    var isActive: Bool { get set }
-    var toggleValue: String? { get set }
-}
-
-public final class FeatureModel: Feature {
+public class FeatureModel: Feature {
     public let key: String
     public let title: String
-    public let type: FeatureType
-    public var isActive: Bool = false
-    public var toggleValue: String?
 
-    public init(key: String, title: String, type: FeatureType) {
+    public init(
+        key: String,
+        title: String
+    ) {
         self.key = key
         self.title = title
-        self.type = type
+    }
+}
+
+public final class SwitchModelImp: FeatureModel, SwitchFeature {
+    public let didSwitched: ((Bool) -> Void)?
+    public var isActive: Bool = false
+
+    public init(
+        key: String,
+        title: String,
+        isActive: Bool = false,
+        didSwitched: ((Bool) -> Void)? = nil
+    ) {
+        self.isActive = isActive
+        self.didSwitched = didSwitched
+        super.init(key: key, title: title)
+    }
+}
+
+public final class ContextFeature: FeatureModel, ValueFeature {
+    public var toggleValue: String?
+    public let items: [ContextMenuItem]
+    
+    public init(key: String, title: String, items: [ContextMenuItem]) {
+        self.items = items
+        super.init(key: key, title: title)
     }
 }
 
