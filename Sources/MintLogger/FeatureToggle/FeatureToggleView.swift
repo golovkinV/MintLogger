@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FeatureToggleView: View {
-
+    
     @ObservedObject private var viewModel: FeatureToggleViewModel
 
     init(viewModel: FeatureToggleViewModel) {
@@ -22,6 +22,12 @@ struct FeatureToggleView: View {
                 FeatureViewRow(feature: value, viewModel: viewModel)
             case let value as ValueFeature:
                 ContextMenuViewRow(feature: value, viewModel: viewModel)
+            case let value as TextInputItem:
+                Text(feature.title)
+                    .font(Font.system(size: 16, weight: .medium))
+                    .onTapGesture {
+                        viewModel.showBottomSheet(value)
+                    }
             default:
                 Text(feature.title)
             }
@@ -34,6 +40,8 @@ struct FeatureToggleView: View {
 
 struct FeatureToggleViewPreviews: PreviewProvider {
     static var previews: some View {
-        FeatureToggleView(viewModel: .init())
+        FeatureToggleView(
+            viewModel: .init()
+        )
     }
 }

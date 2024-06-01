@@ -50,15 +50,15 @@ public final class PulseLogger: LoggerType {
     public func log(_ level: LogLevel, tag: LogTag, className: String, _ message: String) {
         switch level {
         case .debug:
-            logger.debug("🟢 DEBUG: \n[\(className)]\n\t -> \(message)")
+            logger.debug("🟢 DEBUG: \n[\(className)]\n -> \(message)")
         case .info:
-            logger.info("🔵 INFO: \n[\(className)]\n\t -> \(message)")
+            logger.info("🔵 INFO: \n[\(className)]\n -> \(message)")
         case .warning:
-            logger.warning("🟡 WARNING: \n[\(className)]\n\t -> \(message)")
+            logger.warning("🟡 WARNING: \n[\(className)]\n -> \(message)")
         case .error:
-            logger.error("🔴 ERROR: \n[\(className)]\n\t -> \(message)")
+            logger.error("🔴 ERROR: \n[\(className)]\n -> \(message)")
         default:
-            logger.notice("🟣 VERBOSE: \n[\(className)]\n\t -> \(message)")
+            logger.notice("🟣 VERBOSE: \n[\(className)]\n -> \(message)")
         }
     }
 }

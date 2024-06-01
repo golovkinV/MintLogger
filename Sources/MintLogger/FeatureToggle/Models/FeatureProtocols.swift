@@ -21,3 +21,8 @@ public protocol ValueFeature: Feature {
     var toggleValue: String? { get set }
     var items: [ContextMenuItem] { get }
 }
+
+public protocol TextInputFeature: Feature {
+    var placeholder: String { get }
+    var didTapContinue: (String) -> Void { get }
+}

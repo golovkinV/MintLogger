@@ -40,7 +40,11 @@ public final class ContextFeature: FeatureModel, ValueFeature {
     public var toggleValue: String?
     public let items: [ContextMenuItem]
     
-    public init(key: String, title: String, items: [ContextMenuItem]) {
+    public init(
+        key: String,
+        title: String,
+        items: [ContextMenuItem]
+    ) {
         self.items = items
         super.init(key: key, title: title)
     }
@@ -68,5 +72,22 @@ public struct ContextMenuItem {
 extension ContextMenuItem: Equatable {
     public static func == (lhs: ContextMenuItem, rhs: ContextMenuItem) -> Bool {
         lhs.toggleValue == rhs.toggleValue
+    }
+}
+
+public final class TextInputItem: FeatureModel, TextInputFeature {
+    
+    public let placeholder: String
+    public let didTapContinue: (String) -> Void
+    
+    public init(
+        key: String,
+        title: String,
+        placeholder: String,
+        didTapContinue: @escaping (String) -> Void
+    ) {
+        self.placeholder = placeholder
+        self.didTapContinue = didTapContinue
+        super.init(key: key, title: title)
     }
 }

@@ -62,6 +62,8 @@ public final class DefaultFeatureRepository: FeatureRepository, Loggable {
         case let value as ValueFeature:
             value.toggleValue = fetchToggleValue(for: feature.key)
             return value
+        case let value as TextInputItem:
+            return value
         default:
             return nil
         }
